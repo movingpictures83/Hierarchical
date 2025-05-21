@@ -24,6 +24,8 @@ sc <- readRDS(paste(pfix, parameters["genes", 2], sep="/"))
 # the clustering results were saved to the "CLUSTER" metadata
 # if update.cellgroup is TRUE, the GROUP meta data will also be updated
 sc <- cluster.assignment(sc, k=as.integer(parameters["k", 2]))
+#print(str(sc))
+write.csv(sc@pca$rds, paste(outputfile, "csv", sep="."))
 saveRDS(sc,paste(outputfile, "rds", sep="."))
 pdf(paste(outputfile, "pdf", sep="."))
 # different display of the dendrogram tree
